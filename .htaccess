@@ -1,0 +1,11 @@
+# .htaccess
+RewriteEngine On
+
+# Redirect semua request ke folder public
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L,QSA]
+
+# Lindungi folder sensitif
+<FilesMatch "\.(sqlite|db|ini|log)$">
+    Deny from all
+</FilesMatch>
